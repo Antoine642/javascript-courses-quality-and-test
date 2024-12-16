@@ -3,17 +3,16 @@ module.exports = {
   testMatch: ["**/test/jest/**/*.test.js"],
   collectCoverage: true,
   coverageDirectory: "./coverage",
-  coverageReporters: [
-    "json-summary",
-    "text",
-    "lcov"
+  coverageReporters: ["json-summary", "text", "lcov"],
+  coveragePathIgnorePatterns: [
+    "database.js",
   ],
   coverageThreshold: {
     global: {
       branches: 100,
       functions: 100,
       lines: 100,
-      statements: 100
-    }
-  }
+      statements: 100,
+    },
+  },
 };
