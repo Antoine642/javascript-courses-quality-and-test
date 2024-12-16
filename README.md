@@ -1,11 +1,12 @@
 # JavaScript Courses Quality and Test
 
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Antoine642/javascript-courses-quality-and-test/node.js.yml?branch=feature/playwright)
-![Branches](./badges/coverage-branches.svg)
-![Functions](./badges/coverage-functions.svg)
-![Lines](./badges/coverage-lines.svg)
-![Statements](./badges/coverage-statements.svg)
-![Coverage total](./badges/coverage-total.svg)
+![Branches](./coverage/coverage-branches.svg)
+![Functions](./coverage/coverage-functions.svg)
+![Lines](./coverage/coverage-lines.svg)
+![Statements](./coverage/coverage-statements.svg)
+![Coverage total](./coverage/coverage-total.svg)
+
 
 ## Table of Contents
 - [Introduction](#introduction)
