@@ -1,7 +1,7 @@
 # JavaScript Courses Quality and Test
 
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Antoine642/javascript-courses-quality-and-test/node.js.yml?branch=feature/playwright)
-![Jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)
+![Jest Coverage](./coverage/badge.svg)
 
 ## Table of Contents
 - [Introduction](#introduction)
