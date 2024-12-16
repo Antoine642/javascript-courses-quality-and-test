@@ -1,6 +1,6 @@
 # JavaScript Courses Quality and Test
 
-![GitHub Actions](https://img.shields.io/github/actions/workflow/status/Antoine642/javascript-courses-quality-and-test/ci.yml?branch=feature%2Fplaywright)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/:user/:repo/:workflow)
 ![Jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)
 
 ## Table of Contents
