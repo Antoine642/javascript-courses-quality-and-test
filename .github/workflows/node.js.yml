@@ -29,6 +29,9 @@ jobs:
 
       - name: Run Jest tests
         run: npm run test:unit
+      
+      - name: Run Jest coverage
+        run: npm run test:badges
 
       - name: Run Playwright tests
         run: npm run test:e2e
