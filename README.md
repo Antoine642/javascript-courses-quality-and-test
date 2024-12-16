@@ -1,6 +1,6 @@
 # JavaScript Courses Quality and Test
 
-![GitHub Actions](https://github.com/yourusername/javascript-courses-quality-and-test/workflows/CI/badge.svg)
+![GitHub Actions](https://github.com/Antoine642/javascript-courses-quality-and-test/workflows/CI/badge.svg)
 ![Jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)
 
 ## Table of Contents
