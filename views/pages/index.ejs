@@ -37,7 +37,7 @@
 
 <main>
 
-    <h1>❓ Le jeu du pendu ❓</h1>
+    <h1 id="game-title">Le jeu du pendu</h1>
     
     <% if (canPlay) { %>
         <p>Essayer de deviner le mot !</p>
@@ -47,45 +47,45 @@
         </div>
 
         <% if (gameStatus === 'playing') { %>
-            <form action="/" method="post">
+            <form action="/" method="post" id="guess-form">
                 <fieldset class="uk-fieldset">
                     <legend class="uk-legend">Nombre d'essai restant : <%= numberOfTries %></legend>
                     <div class="uk-margin">
-                        <input class="uk-input" type="text" name="word" placeholder="Tapez une lettre" maxlength="1" required>
+                        <input class="uk-input" type="text" name="word" placeholder="Tapez une lettre" maxlength="1" required id="guess-input">
                     </div>
                     <div class="uk-margin">
-                        <button class="uk-input uk-button-secondary uk-form-width-medium" type="submit" value="form-success">Tester</button>
+                        <button class="uk-input uk-button-secondary uk-form-width-medium" type="submit" value="form-success" id="guess-button">Tester</button>
                     </div>
                 </fieldset>
             </form>
         <% } else { %>
-            <form action="/" method="post">
+            <form action="/" method="post" id="reset-form">
                 <div class="uk-margin">
-                    <button class="uk-input uk-button-primary uk-form-width-medium" type="submit" name="reset" value="true">Nouvelle partie</button>
+                    <button class="uk-input uk-button-primary uk-form-width-medium" type="submit" name="reset" value="true" id="new-game">Nouvelle partie</button>
                 </div>
             </form>
         <% } %>
 
         <% if (game) { %>
-           <h3>Votre mot : <%= game %></h3>
+           <h3 id="current-word">Votre mot : <%= game %></h3>
         <% } %>
 
-        <div class="chosen-letters">
+        <div class="chosen-letters" id="chosen-letters">
             Lettres choisies : <%= chosenLetters %>
         </div>
 
         <% if (gameStatus === 'won') { %>
-            <div class="message" style="color: green;">Félicitations ! Vous avez gagné !</div>
+            <div class="message" style="color: green;" id="win-message">Félicitations ! Vous avez gagné !</div>
             <button class="uk-input uk-button-danger uk-form-width-medium" id="share">Share on Twitter</button>
         <% } else if (gameStatus === 'lost') { %>
-            <div class="message" style="color: red;">Dommage ! Vous avez perdu.</div>
-            <h3>Le mot était : <%= word %></h3>
+            <div class="message" style="color: red;" id="lose-message">Dommage ! Vous avez perdu.</div>
+            <h3 id="revealed-word">Le mot était : <%= word %></h3>
         <% } %>
     <% } else { %>
         <p>Vous avez déjà joué aujourd'hui. Revenez demain pour une nouvelle partie !</p>
         <p>Prochaine partie disponible le : <%= nextPlayTime.toLocaleString() %></p>
     <% } %>
-    <div class="top-scores">
+    <div class="top-scores" id="top-scores">
         <h2>Top 1000 Scores</h2>
         <table>
             <thead>

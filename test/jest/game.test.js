@@ -1,10 +1,10 @@
-const Game = require('../game');
-const tools = require('../tools');
-const db = require('../database');
+const Game = require('../../game');
+const tools = require('../../tools');
+const db = require('../../database');
 const fs = require('fs');
 
-jest.mock('../tools');
-jest.mock('../database');
+jest.mock('../../tools');
+jest.mock('../../database');
 
 describe('Game', () => {
   let game;

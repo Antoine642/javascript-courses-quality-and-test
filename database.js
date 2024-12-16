@@ -11,13 +11,29 @@ db.serialize(() => {
       } else {
         if (!result) {
           db.run(
-            "CREATE TABLE scores (id INTEGER PRIMARY KEY, playerId TEXT, score INTEGER)",
+            "CREATE TABLE scores (id INTEGER PRIMARY KEY, playerId TEXT, score INTEGER, timestamp TEXT)",
             (err) => {
               if (err) {
                 console.error("Error creating scores table:", err);
               }
             }
           );
+        } else {
+          // Add timestamp column if it doesn't exist
+          db.all("PRAGMA table_info(scores)", (err, columns) => {
+            if (err) {
+              console.error("Error retrieving table info:", err);
+            } else {
+              const hasTimestamp = Array.isArray(columns) && columns.some(column => column.name === 'timestamp');
+              if (!hasTimestamp) {
+                db.run("ALTER TABLE scores ADD COLUMN timestamp TEXT", (err) => {
+                  if (err) {
+                    console.error("Error adding timestamp column:", err);
+                  }
+                });
+              }
+            }
+          });
         }
       }
     }

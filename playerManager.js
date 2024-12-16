@@ -24,18 +24,20 @@ class PlayerManager {
     });
   }
 
-  async getNextPlayTime(playerId) {
+  async getNextPlayTime(playerId) { 
     return new Promise((resolve, reject) => {
       db.get(
-        "SELECT lastPlayTime FROM players WHERE playerId = ?",
+        "SELECT playerId FROM score WHERE playerId = ?",
         [playerId],
         (err, row) => {
           if (err) {
             console.error("Error getting next play time:", err);
             return reject(err);
           }
+          const now = new Date();
+          now.setHours(0, 0, 0, 0);
           if (!row) {
-            return resolve(new Date());
+            return resolve(now);
           }
           const lastPlayTime = new Date(row.lastPlayTime);
           const nextPlayTime = new Date(lastPlayTime);
@@ -67,6 +69,7 @@ class PlayerManager {
   }
 
   async canPlayerPlay(playerId) {
+    return false;
     return new Promise((resolve, reject) => {
       db.get(
         "SELECT lastPlayTime FROM players WHERE playerId = ?",
