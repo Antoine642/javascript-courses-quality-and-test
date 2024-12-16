@@ -1,6 +1,6 @@
 # JavaScript Courses Quality and Test
 
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/:user/:repo/:workflow)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/)
 ![Jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)
 
 ## Table of Contents
