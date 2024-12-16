@@ -2,8 +2,8 @@ module.exports = {
   testEnvironment: "node",
   testMatch: ["**/test/jest/**/*.test.js"],
   collectCoverage: true,
-  coverageDirectory: "./badges",
-  coverageReporters: ["json-summary"],
+  coverageDirectory: "./coverage",
+  coverageReporters: ["json-summary", "text"],
   coveragePathIgnorePatterns: [
     "database.js",
   ],
