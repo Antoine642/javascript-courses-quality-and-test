@@ -7,8 +7,7 @@
     "start": "node index.js",
     "test": "jest --coverage",
     "test:unit": "jest --coverage",
-    "test:coverage": "npm test -- --coverage",
-    "test:badges": "npm run test:coverage  && jest-coverage-badges",
+    "test:badges": "npm test -- --coverage",
     "test:e2e": "npx playwright test",
     "test:all": "npm run test:unit && npm run test:e2e",
     "test:e2e:ui": "npx playwright test --ui",
@@ -23,7 +22,6 @@
     "ejs": "^3.1.6",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
-    "jest-coverage-badges": "^1.1.2",
     "playwright": "^1.49.1",
     "sqlite3": "^5.1.7"
   },
