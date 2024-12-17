@@ -5,7 +5,6 @@ const session = require("express-session");
 const Game = require("./game.js");
 const PlayerManager = require("./playerManager.js");
 const bodyParser = require("body-parser");
-const sqlite3 = require("sqlite3").verbose();
 const db = require("./database.js");
 
 const PORT = process.env.PORT || 3030;
@@ -49,14 +48,14 @@ app.get("/", async (request, response) => {
     playerId = await playerManager.createPlayer();
     request.session.playerId = playerId;
   }
-  const canPlay = await playerManager.canPlayerPlay(playerId);
+  await playerManager.canPlayerPlay(playerId); // Removed assignment to `canPlay`
 
-  if (!canPlay) { // Inverted logic
+  /* if (!canPlay) { // Inverted logic
     response.render("pages/index", {
       canPlay: false,
       nextPlayTime: await playerManager.getNextPlayTime(playerId),
     });
-  } else {
+  } else { */
     response.render("pages/index", {
       game: game.print(),
       word: game.word,
@@ -66,7 +65,7 @@ app.get("/", async (request, response) => {
       canPlay: true,
       chosenLetters: game.getChosenLetters(),
     });
-  }
+  // }
 });
 
 app.post("/", async (request, response) => {
@@ -115,11 +114,12 @@ app.post("/", async (request, response) => {
               } else {
                 console.log("Game won !");
                 const score = game.getScore();
+                const timestamp = new Date().toISOString();
                 console.log(`Received score: ${score} for player: ${playerId}`);
 
                 db.run(
-                  "INSERT INTO scores (playerId, score) VALUES (?, ?)",
-                  [playerId, score],
+                  "INSERT INTO scores (playerId, score, timestamp) VALUES (?, ?, ?)",
+                  [playerId, score, timestamp],
                   function (err) {
                     if (err) {
                       console.error("Error saving score:", err);
@@ -176,7 +176,7 @@ app.get("/score", (request, response) => {
 
 app.get("/top-scores", (req, res) => {
   db.all(
-    "SELECT playerId, score FROM scores ORDER BY score DESC LIMIT 1000",
+    "SELECT playerId, score, timestamp FROM scores ORDER BY score DESC LIMIT 1000",
     [],
     (err, rows) => {
       if (err) {

@@ -1,39 +1,28 @@
-# Hangman Game
+# JavaScript Courses Quality and Test
 
-This is a small project to build a classic Hangman game in JavaScript.
-The primary goal of this project is to practice and learn how to write tests using various tools and frameworks, including Jest.
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Antoine642/javascript-courses-quality-and-test/node.js.yml?branch=feature/playwright)
+![Branches](./coverage/badge-branches.svg)
+![Functions](./coverage/badge-functions.svg)
+![Lines](./coverage/badge-lines.svg)
+![Statements](./coverage/badge-statements.svg)
 
-**Test-Driven Development:** The project is structured to encourage writing tests for each feature of the game.
 
-## Getting Started
+## Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-### Running the Game
+## Introduction
+This project is designed to provide a comprehensive suite of JavaScript courses focused on quality and testing. It aims to help developers improve their coding skills and ensure their code is robust and reliable.
 
-To start the game, copy and paste the .env.example file to .env and set the PORT variable to 3030.
+## Features
+- In-depth JavaScript tutorials
+- Quality assurance techniques
+- Testing methodologies
+- Practical examples and exercises
 
-Then use the following command:
-
-```bash
-npm start
-```
-
-This will start the server, and you can play the game by visiting `http://localhost:3030` in your browser.
-
-### Running Tests
-
-This project uses Jest for testing. To run the tests, use the following command:
-
-```bash
-npm test
-```
-
-The tests are designed to ensure that the game logic works correctly and to demonstrate best practices in test-driven development.
-
-## Project Structure
-
-- **`game.js`**: Contains the core game logic.
-- **`tools.js`**: Utility functions used in the game.
-- **`test/`**: Contains test files for each module (e.g., `game.test.js`, `tools.test.js`).
-- **`index.js`**: Main server file that sets up the Express app and routes.
-- **`public/`**: Static files such as HTML, CSS, and client-side JavaScript.
-- **`views/`**: EJS templates used to render the game interface.
+## Installation
+To get started with this project, clone the repository and install the necessary dependencies:

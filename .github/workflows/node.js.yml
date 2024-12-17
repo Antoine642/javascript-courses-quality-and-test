@@ -1,0 +1,44 @@
+name: Test
+concurrency: production
+
+on:
+  push:
+    branches: [ main, feature/* ]
+  pull_request:
+    branches: [ main, feature/* ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright dependencies
+        run: npx playwright install --with-deps
+
+      - name: Run Jest tests
+        run: npm run test:unit
+      
+      - name: Run Jest coverage
+        run: npm run test:badges
+
+      - name: Start server
+        run: npm start & sleep 5
+
+      - name: Run Playwright tests
+        run: npm run test:e2e
+
+      - name: Display test results
+        if: failure()
+        run: cat ./test-results.txt || echo "No test results file found"

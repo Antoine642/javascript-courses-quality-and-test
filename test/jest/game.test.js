@@ -1,10 +1,9 @@
-const Game = require('../game');
-const tools = require('../tools');
-const db = require('../database');
-const fs = require('fs');
+const Game = require('../../game');
+const tools = require('../../tools');
+const db = require('../../database');
 
-jest.mock('../tools');
-jest.mock('../database');
+jest.mock('../../tools');
+jest.mock('../../database');
 
 describe('Game', () => {
   let game;
@@ -256,7 +255,6 @@ describe('Game', () => {
   });
 
   test("should choose word from database if available", async () => {
-    const today = new Date().toISOString().split("T")[0];
     db.get.mockImplementation((query, params, callback) => {
       callback(null, { word: "databaseWord" });
     });
@@ -273,7 +271,6 @@ describe('Game', () => {
   });
 
   test("should insert chosen word into database if not already present", async () => {
-    const today = new Date().toISOString().split("T")[0];
     game.listOfWords = ["apple"];
     tools.getRandomInt.mockReturnValue(0);
     db.get.mockImplementation((query, params, callback) => {
@@ -287,7 +284,7 @@ describe('Game', () => {
     expect(game.unknowWord).toBe("#####");
     expect(db.run).toHaveBeenCalledWith(
       "INSERT INTO word_of_the_day (date, word) VALUES (?, ?)",
-      [today, "apple"],
+      [new Date().toISOString().split("T")[0], "apple"],
       expect.any(Function)
     );
   });
@@ -301,7 +298,6 @@ describe('Game', () => {
   });
 
   test("should handle database error when inserting word of the day", async () => {
-    const today = new Date().toISOString().split("T")[0];
     game.listOfWords = ["apple"];
     tools.getRandomInt.mockReturnValue(0);
     db.get.mockImplementation((query, params, callback) => {
