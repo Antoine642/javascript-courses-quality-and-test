@@ -3,19 +3,24 @@ import pluginJs from "@eslint/js";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  {files: ["**/*.js"], languageOptions: {sourceType: "commonjs"}},
-  {languageOptions: { globals: globals.browser }},
+  {
+    ignores: [
+      "coverage/**",
+      "playwright-report/**",
+      "node_modules/**",
+      "dist/**",
+    ],
+  },
+  {
+    files: ["**/*.js"],
+    languageOptions: {
+      sourceType: "commonjs",
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        ...globals.jest,
+      },
+    },
+  },
   pluginJs.configs.recommended,
-  {
-    files: ["**/*.test.js"],
-    env: {
-      jest: true,
-    },
-  },
-  {
-    files: ["**/*.spec.js"],
-    env: {
-      "playwright/globals": true,
-    },
-  },
 ];
