@@ -33,6 +33,9 @@ jobs:
       - name: Run Jest coverage
         run: npm run test:badges
 
+      - name: Start server
+        run: npm start &
+
       - name: Run Playwright tests
         run: npm run test:e2e
 
