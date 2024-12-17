@@ -1,4 +1,3 @@
-const sqlite3 = require("sqlite3").verbose();
 const db = require("./database.js");
 
 class PlayerManager {
@@ -69,7 +68,6 @@ class PlayerManager {
   }
 
   async canPlayerPlay(playerId) {
-    return false;
     return new Promise((resolve, reject) => {
       db.get(
         "SELECT lastPlayTime FROM players WHERE playerId = ?",

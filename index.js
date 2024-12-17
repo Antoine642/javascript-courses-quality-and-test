@@ -5,7 +5,6 @@ const session = require("express-session");
 const Game = require("./game.js");
 const PlayerManager = require("./playerManager.js");
 const bodyParser = require("body-parser");
-const sqlite3 = require("sqlite3").verbose();
 const db = require("./database.js");
 
 const PORT = process.env.PORT || 3030;
@@ -49,7 +48,7 @@ app.get("/", async (request, response) => {
     playerId = await playerManager.createPlayer();
     request.session.playerId = playerId;
   }
-  const canPlay = await playerManager.canPlayerPlay(playerId);
+  await playerManager.canPlayerPlay(playerId); // Removed assignment to `canPlay`
 
   /* if (!canPlay) { // Inverted logic
     response.render("pages/index", {
